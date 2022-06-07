@@ -1,2 +1,2 @@
-# ConfirmTool
+# ConvertTool
 00000112を00:00:01,200というように文字を変換して出力するWindowsアプリケーション。
