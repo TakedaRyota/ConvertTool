@@ -7,3 +7,4 @@ C:\Users\takeda ryota\Documents\ConvertTool\Convert_Tool\Convert_Tool\bin\Debug\
 C:\Users\takeda ryota\Documents\ConvertTool\Convert_Tool\Convert_Tool\bin\Debug\Convert_Tool.pdb
 C:\Users\takeda ryota\Documents\ConvertTool\Convert_Tool\Convert_Tool\obj\Debug\Convert_Tool.exe
 C:\Users\takeda ryota\Documents\ConvertTool\Convert_Tool\Convert_Tool\obj\Debug\Convert_Tool.pdb
+C:\Users\takeda ryota\Documents\ConvertTool\Convert_Tool\Convert_Tool\obj\Debug\Convert_Tool.csproj.AssemblyReference.cache

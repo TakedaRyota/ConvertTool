@@ -63,6 +63,7 @@ namespace Convert_Tool
         {
             if (isInputError()) return;
             string resultText = convert_text();
+            if (resultText == "") return;
             DateTime dateTime = DateTime.Now;
             using (SaveFileDialog saveFileDialog = new SaveFileDialog()
             {
@@ -92,6 +93,11 @@ namespace Convert_Tool
             if (string.IsNullOrEmpty(path_textBox.Text))
             {
                 MessageBox.Show("ファイルが選択されていません。", "ロードエラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return true;
+            }
+            else if (!Path.GetExtension(path_textBox.Text).Equals(".txt"))
+            {
+                MessageBox.Show("txtファイルを選択してください。", "ロードエラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return true;
             }
             return false;
