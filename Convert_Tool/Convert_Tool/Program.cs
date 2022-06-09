@@ -16,7 +16,7 @@ namespace Convert_Tool
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Confirm_Tool());
+            Application.Run(new Form1());
         }
     }
 }
