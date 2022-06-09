@@ -1,4 +1,3 @@
-C:\Users\takeda ryota\Documents\ConvertTool\Convert_Tool\Convert_Tool\obj\Debug\Convert_Tool.csproj.AssemblyReference.cache
 C:\Users\takeda ryota\Documents\ConvertTool\Convert_Tool\Convert_Tool\obj\Debug\Convert_Tool.Form1.resources
 C:\Users\takeda ryota\Documents\ConvertTool\Convert_Tool\Convert_Tool\obj\Debug\Convert_Tool.Properties.Resources.resources
 C:\Users\takeda ryota\Documents\ConvertTool\Convert_Tool\Convert_Tool\obj\Debug\Convert_Tool.csproj.GenerateResource.cache
