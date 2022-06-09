@@ -55,16 +55,6 @@ namespace Convert_Tool
         }
 
         /// <summary>
-        /// CSV出力ボタンの処理
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void csv_output_btn_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        /// <summary>
         /// テキストファイル出力ボタンの処理
         /// </summary>
         /// <param name="sender"></param>
@@ -72,7 +62,25 @@ namespace Convert_Tool
         private void txt_output_btn_Click(object sender, EventArgs e)
         {
             if (isInputError()) return;
-            convert_text();
+            string resultText = convert_text();
+            DateTime dateTime = DateTime.Now;
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog()
+            {
+                FileName = "convert_text_" + dateTime.ToString("yyyyMMddHHmm"),
+                Filter = "テキストファイル(*.txt)|*.txt",
+                Title = "保存先のファイルを選択してください。",
+                RestoreDirectory = true,
+                OverwritePrompt = true,
+                CheckPathExists = true
+            })
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    using (StreamWriter streamWriter = new StreamWriter(saveFileDialog.FileName, false, Encoding.UTF8))
+                    {
+                        streamWriter.Write(resultText);
+                    }
+                    MessageBox.Show("変換データの出力が完了しました。", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
         }
 
         /// <summary>
@@ -92,7 +100,7 @@ namespace Convert_Tool
         /// <summary>
         /// ファイルを読み込み変換する
         /// </summary>
-        private void convert_text()
+        private string convert_text()
         {
             StreamReader sr = new StreamReader(path_textBox.Text);
             string str = "";          
@@ -119,14 +127,19 @@ namespace Convert_Tool
                         timeStr += "," + num;
                         lineStr.Add(timeStr);
                     }
+                    else
+                    {
+                        MessageBox.Show("テキストの形式が異なります。", "フォーマットエラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return "";
+                    }
                 }
 
-                str += String.Join("->", lineStr);
+                str += String.Join("->", lineStr) + "\r\n";
 
-                str += "\r\n" + "\r\n";
+                str += "\r\n\r\n";
                 counter++;
             }
-            Result_Text.Text = str;
+            return str;
         }
     }
 }
