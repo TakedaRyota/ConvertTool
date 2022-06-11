@@ -1,5 +1,6 @@
 # ConvertTool
 
+## 機能要件
 元のテキストファイル
 00000112 00000115
 00000130 00000145
@@ -18,4 +19,16 @@
 間のスペースは「->」に変換し、
 行数と改行を2つ加える。
 
+## 画面
 
+![画面](https://github.com/TakedaRyota/ConvertTool/blob/main/image/pic_01.png)
+
+- ファイルパス入力エリア
+- 参照ボタン
+- 出力ボタン
+
+## 使用言語
+
+- C#
+- | .NETFramework
+  | Version=v4.7.2
