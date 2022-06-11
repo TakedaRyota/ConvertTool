@@ -29,6 +29,5 @@
 
 ## 使用言語
 
-- C#
-- | .NETFramework
-  | Version=v4.7.2
+- C#.NETFramework
+  Version=v4.7.2
