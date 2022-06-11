@@ -134,7 +134,9 @@ namespace Convert_Tool
                                 + match.Groups[3].Value.Trim();
                             double num = Int32.Parse(match.Groups[4].Value.Trim());
                             num = Math.Round(num / 60, 3, MidpointRounding.AwayFromZero);
-                            timeStr += "," + num;
+                            string result_num = num.ToString("0.000").Split('.')[1];
+                            
+                            timeStr += "," + addZeroPadding(result_num);
                             lineStr.Add(timeStr);
                         }
                         else
@@ -159,6 +161,31 @@ namespace Convert_Tool
                 }
             }
             return str;
+        }
+
+        /// <summary>
+        /// 3桁ない場合は0を付加
+        /// </summary>
+        /// <param name="targetStr"></param>
+        /// <returns></returns>
+        private string addZeroPadding(string targetStr)
+        {
+            if (targetStr == "")
+            {
+                return "000";
+            }
+            else if (targetStr.Length == 1)
+            {
+                return targetStr + "00";
+            }
+            else if (targetStr.Length == 2)
+            {
+                return targetStr + "0";
+            }
+            else
+            {
+                return targetStr;
+            }
         }
     }
 }
