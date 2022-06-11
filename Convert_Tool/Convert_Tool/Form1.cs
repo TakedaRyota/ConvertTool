@@ -116,34 +116,47 @@ namespace Convert_Tool
             while (sr.EndOfStream == false)
             {
                 str += counter + "\r\n";
-                string[] number_str = sr.ReadLine().Split(' ');
-
-                var lineStr = new List<string>() {};
-                foreach (string numStr in number_str)
+                string row_str = sr.ReadLine();
+                // その行が空の場合は無視
+                if (!string.IsNullOrEmpty(row_str))
                 {
-                    Match match = reg.Match(numStr);
-                    if (match.Success == true)
+                    string[] number_str = row_str.Split(' ');
+
+                    var lineStr = new List<string>() { };
+                    foreach (string numStr in number_str)
                     {
-                        string timeStr = "";
-                        timeStr += match.Groups[1].Value.Trim() + ":"
-                            + match.Groups[2].Value.Trim() + ":"
-                            + match.Groups[3].Value.Trim();
-                        double num = Int32.Parse(match.Groups[4].Value.Trim());
-                        num = Math.Round(num / 60, 3, MidpointRounding.AwayFromZero) % 1 * 1000;
-                        timeStr += "," + num;
-                        lineStr.Add(timeStr);
+                        Match match = reg.Match(numStr);
+                        if (match.Success == true)
+                        {
+                            string timeStr = "";
+                            timeStr += match.Groups[1].Value.Trim() + ":"
+                                + match.Groups[2].Value.Trim() + ":"
+                                + match.Groups[3].Value.Trim();
+                            double num = Int32.Parse(match.Groups[4].Value.Trim());
+                            num = Math.Round(num / 60, 3, MidpointRounding.AwayFromZero);
+                            timeStr += "," + num;
+                            lineStr.Add(timeStr);
+                        }
+                        else
+                        {
+                            // 空の場合は無視
+                            if (numStr == "")
+                            {
+                                lineStr.Add("");
+                            }
+                            else
+                            {
+                                MessageBox.Show("テキストの形式が異なります。", "フォーマットエラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return "";
+                            }
+                        }
                     }
-                    else
-                    {
-                        MessageBox.Show("テキストの形式が異なります。", "フォーマットエラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return "";
-                    }
+
+                    str += String.Join("->", lineStr) + "\r\n";
+
+                    str += "\r\n\r\n";
+                    counter++;
                 }
-
-                str += String.Join("->", lineStr) + "\r\n";
-
-                str += "\r\n\r\n";
-                counter++;
             }
             return str;
         }
